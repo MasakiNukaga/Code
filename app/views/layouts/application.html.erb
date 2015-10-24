@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Codo|プログラムを共有して成長する</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <div class="header-wrapper">
+  <nav>
+    <div class="nav-left">
+      <%= link_to 'Code', user_codes_path %>
+    </div>
+
+    <div class="nav-right">
+      <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% if current_user.admin %>
+            <%= link_to 'ユーザー管理',users_path %>
+          <% end %>
+      <% else %>
+          <%= link_to 'アカウント登録', new_user_registration_path %> |
+          <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
+    </div>
+  </nav>
+  </div>
+</header>
+<div class="notice-wrapper">
+<% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+</div>
+<div class="main-wrapper">
+<article>
+<%= yield %>
+</article>
+</div>
+<div class="footer-wrapper">
+  <div class="footer-right">
+    <p>システムに関する意見・要望がある場合は、メールにてご連絡ください。</p><br />
+    <a href="mailto:13t4053s@vc.ibaraki.ac.jp?subject=Commecoに関するフィードバック&amp;body=意見・要望を記載ください">意見・要望はこちらから</a>
+  </div>
+</div>
+</body>
+</html>

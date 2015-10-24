@@ -1,0 +1,8 @@
+<% @user.each do |user|%>
+    <% if user.name %>
+        <p><%= user.name %> < <%= user.email %> ></p>
+    <% else %>
+        <p><%= user.email %></p>
+    <% end %>
+    <%= link_to "削除", user_path(user.id), data: { confirm: "本当に削除しますか？登録したプログラムも削除されます。" }, method: :delete %>
+<% end %>

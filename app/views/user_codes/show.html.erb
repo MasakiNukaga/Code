@@ -1,0 +1,33 @@
+<h1><%= @usercode[:title] %></h1>
+<div class="source-code-wrapper">
+    <h2>ソースコード</h2>
+    <div class="source-code">
+      <pre><code><%= @code %></code></pre>
+    </div>
+</div>
+<div class="commecos-wrapper">
+    <h2>Commeco</h2>
+    <% @commecos.each do |com| %>
+        <div class="commeco-content">
+          <% if User.find(com.user_id).name %>
+          <p class="post-name"><%= p "投稿者 : #{User.find(com.user_id).name}" %></p>
+          <% else %>
+          <p><%= p "投稿者 : #{User.find(com.user_id).email}" %></p>
+          <% end %>
+          <p class="commeco"><%= com.comment if com.comment%></p>
+          <% if current_user.email == com.user.email %>
+            <%= link_to '削除',commeco_path(com.id), method: :delete, data:{:confirm => "本当に削除しますか？"} %>
+          <% end %>
+        </div>
+    <% end %>
+</div>
+<div class="post-commeco-wrapper">
+
+  <%= form_for Commeco.new do |f| %>
+      <h3>Commecoする</h3>
+      <%= f.text_area :comment, required: true %>
+      <%= f.hidden_field :user_code_id, value: @usercode.id %><br />
+      <%= f.submit "投稿" %>
+  <% end %>
+
+</div>

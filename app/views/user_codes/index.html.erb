@@ -1,0 +1,73 @@
+
+<div class="introduction">
+  <h1>みんなのプログラムを共有しよう</h1>
+  <p>プログラムを投稿することで、わからないところを誰かに聞いたり、もっとクールな方法を教えてもらうことができます！</p>
+</div>
+
+<% if current_user.name.blank? %>
+  <div class="notice-wrapper">
+    <p class="alert alert-danger">名前が設定されていません。プロフィール変更から名前を登録してください</p>
+  </div>
+<% end %>
+
+<div class="left-wrapper">
+    <div class="post-source-wrapper">
+        <h2>投稿する</h2>
+        <%= form_for UserCode.new do |f| %>
+        <h3>言語</h3>
+        <%= f.text_field :language, required:true %>
+        <h3>タイトル</h3>
+        <%= f.text_field :title, required: true%>
+        <h3>プログラムをコピペ</h3>
+        <%= f.text_area :source, id: 'code-area',required: true %><br />
+        <%= f.submit "コード投稿",class: 'btn' %>
+        <% end %>
+    </div>
+</div>
+<div class="center-wrapper">
+  <h2>投稿されたプログラム</h2>
+  <div class="source-list-wrapper">
+    <% if @user_codes.count == 0 %>
+        <p>プログラムがありません。</p>
+    <% end %>
+    <% @user_codes.each do |code| %>
+      <div class="source">
+        <p><%= p "言語 : #{code.language}" if code.language%></p>
+        <p><%= p "タイトル : #{code.title}" if code.title%></p>
+          <% if code.user.name.present? %>
+              <p><%= p '作成者 : ' %>
+                <%= link_to("#{code.user.name}",user_path(code.user.id)) %>
+          <% else %>
+              <p><%= p '作成者 : ' %>
+                <%= link_to("#{code.user.email}",user_path(code.user.id)) %>
+          <% end %>
+        <p><%=  link_to('詳細を見る',user_code_path(code.id), method: :get) %>
+        <% if current_user.email == code.user.email || current_user.admin%>
+        <%= link_to '削除',user_code_path(code.id), method: :delete, data:{:confirm => "本当に削除しますか？Commecoも消えます。"} %>
+        <% end %></p>
+      </div>
+    <% end %>
+    <%= paginate(@user_codes) %>
+    </div>
+</div>
+
+<div class="right-wrapper">
+  <div class="search">
+    <%= form_tag user_codes_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+        <h2>プログラム検索</h2>
+        <p>言語またはタイトルで検索できます</p>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "検索する", :name => nil, class: 'btn' %>
+        </p>
+    <% end %>
+  </div>
+  <div class="source-language-list">
+    <h2>言語一覧</h2>
+    <% @code_language_map.each do |language, count| %>
+    <p><%= p "#{language}, #{count}" %></p>
+    <% end %>
+    <p>コード総数<%= @codes_count %></p>
+  </div>
+</div>
+

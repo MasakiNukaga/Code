@@ -1,0 +1,23 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-source-list{
+  padding:50px 100px;
+  text-align:center;
+  .user-source{
+    border-radius:20px;
+    word-wrap:break-word;
+    width:200px;
+    height:150px;
+    display:inline-block;
+    vertical-align:middle;
+    background-color:plum;
+    margin:10px 10px;
+    padding-top:40px;
+  }
+}
+
+.pager{
+
+}

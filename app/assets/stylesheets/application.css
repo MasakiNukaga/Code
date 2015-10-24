@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body{
+    margin:0;
+    width:1280px;
+    font-family:'arial narrow';
+    background-color:black;
+}
+h2{
+    margin:0;
+    border-bottom:solid 1px;
+}
+a{
+    text-decoration:none;
+}
+p{
+    margin:0;
+}
+article{
+    margin:0 80px;
+}
+textarea{
+    width:350px;
+    height:150px;
+}
+
+.btn{
+    padding: 5px 5px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.main-wrapper{
+    background-image: url("key.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    width: 1280px;
+    height: 100%;
+    padding:10px 0;
+}
+
+.notice-wrapper{
+    margin-top:60px;
+    background-color:limegreen;
+}
+
+article a:hover{
+    opacity:0.7;
+}
+
+article a:visited{
+    color:white;
+}
+
+header{
+
+    height:60px;
+    background-color:palegreen;
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+}
+
+.header-wrapper{
+    padding:0 40px;
+}
+
+.header-wrapper .nav-left{
+    letter-spacing:10px;
+}
+
+.footer-wrapper{
+    background-color:black;
+    height:200px;
+    border-top:solid;
+    margin:0;
+    padding: 30px 70px;
+    color:white;
+}
+
+.footer-left{
+    float:left;
+    display:inline-block;
+    line-height:30px;
+}
+
+.footer-right{
+    float:right;
+    display:inline-block;
+}
+
+.footer-wrapper a{
+    color:black;
+    background-color:palegreen;
+    padding:5px;
+    border-radius:3px;
+}
+.footer-wrapper a:visited{
+    color:black;
+}
+.footer-wrapper a:hover{
+    opacity:0.7;
+}
+
+.nav-left{
+    margin-top:12px;
+    display:inline-block;
+    font-size:30px;
+    float:left;
+    color:plum;
+}
+.nav-right{
+    margin-top:18px;
+    display:inline-block;
+    float:right;
+}

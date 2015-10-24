@@ -1,0 +1,88 @@
+// Place all the styles related to the UserCodes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.left-wrapper{
+  display:inline-block;
+  vertical-align: top;
+  width:350px;
+  background-color:plum;
+  border-radius:10px;
+  padding:10px 10px;
+}
+
+.center-wrapper{
+  display:inline-block;
+  vertical-align: top;
+  width:350px;
+  background-color:plum;
+  border-radius:10px;
+  padding:10px 10px;
+  .source{
+    margin: 0;
+    border-bottom: solid 1px;
+    background-color:white;
+    a{
+      color:rgb(10,20,30);
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+  }
+}
+
+.right-wrapper{
+  display:inline-block;
+  vertical-align: top;
+  width:350px;
+  background-color:plum;
+  border-radius:10px;
+  padding:10px 10px;
+}
+
+.introduction{
+  margin:50px;
+}
+
+.source-code-wrapper {
+  margin-top:50px;
+  .source-code {
+    padding:30px 30px;
+    background-color: white;
+    ol {
+      margin: 0;
+      padding: 10px 20px;
+      li {
+        margin: 5px 5px;
+        font-size:120%;
+        white-space: -moz-pre-wrap; /* Mozilla */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        white-space: pre-wrap; /* CSS3 */
+        word-wrap: break-word; /* IE 5.5+ */
+      }
+    }
+  }
+}
+
+.commecos-wrapper {
+  margin-top:50px;
+  .commeco-content {
+    padding: 10px;
+    background-color: white;
+    .commeco {
+      white-space: -moz-pre-wrap; /* Mozilla */
+      white-space: -pre-wrap; /* Opera 4-6 */
+      white-space: -o-pre-wrap; /* Opera 7 */
+      white-space: pre-wrap; /* CSS3 */
+      word-wrap: break-word; /* IE 5.5+ */
+    }
+    .post-name {
+      border-bottom: dotted 2px;
+    }
+    a{
+      color:red;
+    }
+  }
+}

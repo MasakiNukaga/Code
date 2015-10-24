@@ -1,0 +1,21 @@
+<% if @user.name %>
+    <h1><%= "#{@user.name}のソースコード一覧" %></h1>
+<% else %>
+    <h1><%= "#{@user.email}のソースコード一覧" %></h1>
+<% end %>
+
+<div class="user-source-list">
+<% @user_codes.each do |code| %>
+    <div class="user-source">
+        <p><%= p "言語 : #{code.language}" if code.language%></p>
+        <p><%= p "タイトル : #{code.title}" if code.title%></p>
+        <p><%=  link_to('詳細を見る',user_code_path(code.id), method: :get) %>
+        <% if current_user.email == code.user.email %>
+          <%= link_to '削除',user_code_path(code.id), method: :delete, data:{:confirm => "本当に削除しますか？Commecoも消えます。"} %>
+        <% end %></p>
+    </div>
+<% end %>
+</div>
+<div class="pager">
+<%= paginate(@user_codes) %>
+</div>
